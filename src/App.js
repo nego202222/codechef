@@ -1,24 +1,59 @@
-import logo from './logo.svg';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Row, Col, Form } from 'reactstrap';
+import Menu from './componentes/Menu';
+import Rodape from './componentes/Rodape';
+import Home from './componentes/pages/Home';
+import Contato from './componentes/pages/Contato';
+import Cardapio from './componentes/pages/Cardapio';
+
+
+import { BrowserRouter, Route, Routes, links, router, routes } from 'react-router-dom'
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container fluid>
+
+      <BrowserRouter>
+
+        <Row>
+          <Col>
+            {/* aqui vai o nav-bar */}
+            <Menu></Menu>
+          </Col>
+        </Row>
+
+
+        <Row>
+          {/* aqui vai conteudo rotas do site */}
+          <Col>
+            {/* rotas */}
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route path="/cardapio" element={<Cardapio />} />
+              <Route path="/contato" element={<Contato />} />
+            </Routes>
+          </Col>
+        </Row>
+
+      </BrowserRouter>
+
+      <Row>
+        {/* Aqui vai rodape */}
+        <Rodape></Rodape>
+      </Row>
+
+    </Container>
+
+
+
+
+
+
+
+
+
   );
 }
 
